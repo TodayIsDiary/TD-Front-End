@@ -1,6 +1,22 @@
+/* Login Page */
 @font-face {
     font-family: 'Cafe24';
     src: url('./Cafe24Oneprettynight.woff');
     font-style: normal;
     font-weight: 400;
+}
+
+/* List Page */
+@font-face {
+    font-family: 'GowunBatang_R';
+    src: url('./GowunBatang-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'GowunBatang_B';
+    src: url('./GowunBatang-Bold.ttf');
+    font-style: normal;
+    font-weight: bold;
 }
