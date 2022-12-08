@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import "../../static/assets/fonts/font.css";
-import "../../static/assets/images/user.png"
 
 export const Page = styled.div`
     width: 100%;
@@ -80,14 +79,14 @@ export const PasswordInput = styled.input`
     border: none;
     outline: none;
     border-radius: 10px;
-    font-family: 'Cafe24';
-    font-style: normal;
-    font-weight: 400;
     font-size: 20px;
     padding-left: 80px;
     margin-bottom: 80px;
     ::placeholder{
-        color: #ffffff;
+    color: #ffffff; 
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
     }
 `;
 
