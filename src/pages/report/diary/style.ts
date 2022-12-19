@@ -21,6 +21,7 @@ export const MainTitle = styled.div`
 export const Menu = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom: 35px;
 `;
 
 export const Dropdown = styled.div`
@@ -88,11 +89,137 @@ export const Search = styled.div`
 `;
 
 export const SearchBar = styled.input`
-    width: 300px;
+    width: 240px;
     height: 34px;
     background: none;
-    border-bottom: 1.5px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
     border-top: none;
     border-left: none;
     border-right: none;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 40px;
+    text-align: center;
 `;
+
+export const Contour = styled.hr`
+    width: 1480px;
+    border: 1px solid #ffffff;
+    margin: 0 0 0 215px;
+`;
+
+export const Category = styled.div`
+    width: 100%;
+    height: 71px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const DiaryNumber = styled.span`
+    width: 265px;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Text = styled.span`
+    width: 865px;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Reporter = styled.span`
+    width: 350px;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ReportList = styled.div`
+    width: 100%;
+    height: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Number = styled.span`
+    width: 265px;
+    height: 96px;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Context = styled.span`
+    width: 865px;
+    height: 96px;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const UserName = styled.span`
+    width: 350px;
+    height: 96px;
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const PageWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 83px 0 0 0;
+`;
+
+export const PageNumber = styled.span`
+    font-family: 'Cafe24';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    color: #ffffff;
+    margin-right: 45px;
+    :hover{
+        cursor: pointer;
+    }
+`;
+
