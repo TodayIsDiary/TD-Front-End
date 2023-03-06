@@ -1,6 +1,7 @@
-import React, { useState, Component } from "react";
-import { Route } from "react-router-dom";
-import axios, { AxiosResponse } from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 // Styles
 import * as S from "./style";
@@ -8,16 +9,50 @@ import * as S from "./style";
 function Login(): React.ReactElement {
     const [accountId, setAccountId] = useState("");
     const [password, setPassword] = useState("");
-    async function Login() {
+
+    const navigate = useNavigate();
+
+    async function HandleLogin() {
         axios.post("https://todayisdiary.site/user/login", {
             accountId : accountId,
             password : password,
         })
         .then((res) => {
             console.log(res);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+            Toast.fire({
+                icon: "success",
+                title: "관리자 로그인에 성공하였습니다.",
+            });
+            navigate("/report/diary");
         })
         .catch((err) => {
             console.log(err);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+            Toast.fire({
+                icon: "error",
+                title: "관리자 로그인에 실패하였습니다.",
+            });
         })
     }
     return(
@@ -41,7 +76,7 @@ function Login(): React.ReactElement {
                             placeholder="비밀번호" 
                         />
                     </S.InputWrapper>
-                    <S.SubmitBtn onClick={() => Login()}>로그인</S.SubmitBtn>
+                    <S.SubmitBtn onClick={() => HandleLogin()}>로그인</S.SubmitBtn>
                 </S.LoginWrapper>
                 <S.LogoWrapper>
                     <S.LogoImg src="https://cdn.discordapp.com/attachments/831153482911973398/1049644059188277278/Moon.png" />
