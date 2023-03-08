@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import Diary from "../report/diary";
 // Styles
 import * as S from "./style";
 
@@ -37,7 +37,12 @@ function Login(): React.ReactElement {
             navigate("/report/diary");
         })
         .catch((err) => {
-            console.log(err);
+            if(err.response){
+                // 요청이 이루어졌지만 서버가 2XX의 범위를 벗어나는 상태 코드로 응답했을 경우
+                console.log(err.response.data);
+                console.log(err.response.status);
+                console.log(err.response.header);
+            }
             const Toast = Swal.mixin({
                 toast: true,
                 position: "top-end",

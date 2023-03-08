@@ -6,7 +6,7 @@ import * as S from "./style";
 
 function Diary(): React.ReactElement {
 
-    const dropdownItems = ["일기", "댓글", "유저"];
+    const dropdownItems = ["댓글", "일기", "유저"];
     const [onSelecting, setOnSelecting] = useState<boolean>(true);
     const [selectedItem, setSelectedItem] = useState<string>(dropdownItems[0])
 
