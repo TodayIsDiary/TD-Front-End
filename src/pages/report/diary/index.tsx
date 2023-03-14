@@ -7,8 +7,15 @@ import * as S from "./style";
 function Diary(): React.ReactElement {
 
     const dropdownItems = ["댓글", "일기", "유저"];
-    const [onSelecting, setOnSelecting] = useState<boolean>(true);
+    const [onSelecting, setOnSelecting] = useState<boolean>(false);
     const [selectedItem, setSelectedItem] = useState<string>(dropdownItems[0])
+    const [list, setList] = useState([]);
+
+    async function ReportList() {
+        axios.get("https://todayisdiary.site/report/list/user", {
+
+        })
+    };
 
     return(
         <>

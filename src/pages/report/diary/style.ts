@@ -33,7 +33,7 @@ export const Dropdown = styled.div`
 
 export const CategoryWrapper = styled.ul`
     position: absolute;
-    margin: 0;
+    margin: 30px 0px 0px 0px;
     padding: 0;
 `;
 
