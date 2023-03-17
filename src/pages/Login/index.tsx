@@ -5,11 +5,12 @@ import Swal from "sweetalert2";
 import Diary from "../report/diary";
 // Styles
 import * as S from "./style";
+import useCookies from "react-cookie/cjs/useCookies";
 
 function Login(): React.ReactElement {
     const [accountId, setAccountId] = useState("");
     const [password, setPassword] = useState("");
-
+    const [cookies, setCookie] = useCookies(['id']);
     const navigate = useNavigate();
 
     async function HandleLogin() {
@@ -34,7 +35,8 @@ function Login(): React.ReactElement {
                 icon: "success",
                 title: "관리자 로그인에 성공하였습니다.",
             });
-            navigate("/report/diary");
+            setCookie('id', res.data.token);
+            navigate("/report/diary", {replace: true} );
         })
         .catch((err) => {
             if(err.response){
