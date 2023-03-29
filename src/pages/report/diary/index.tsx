@@ -80,11 +80,11 @@ function Diary(): React.ReactElement {
                     <S.Reporter>신고자</S.Reporter>
                 </S.Category>
                 <S.Contour />
-                {/* {viewList.map(list =>
+                {viewList.map(list =>
                     <S.ReportList>
                         <S.Number>{list.reportId}</S.Number>
                     </S.ReportList>
-                )} */}
+                )}
                 {/* <S.ReportList>
                     <S.Number>1</S.Number>
                     <S.Context>김호영이 사람을 노동착취 해요.</S.Context>
