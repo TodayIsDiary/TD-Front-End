@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Diary from "../report/diary";
+
 // Styles
 import * as S from "./style";
-import useCookies from "react-cookie/cjs/useCookies";
+
+// Cookie
+import { useCookies } from "react-cookie";
 
 function Login(): React.ReactElement {
     const [accountId, setAccountId] = useState("");
     const [password, setPassword] = useState("");
-    const [cookies, setCookie] = useCookies(['id']);
+    const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
 
     async function HandleLogin() {
@@ -35,12 +38,11 @@ function Login(): React.ReactElement {
                 icon: "success",
                 title: "관리자 로그인에 성공하였습니다.",
             });
-            setCookie('id', res.data.token);
-            navigate("/report/diary", {replace: true} );
+            localStorage.setItem('TD-Atk', res.data.atk);
+            navigate("/report/diary", {replace: false});
         })
         .catch((err) => {
             if(err.response){
-                // 요청이 이루어졌지만 서버가 2XX의 범위를 벗어나는 상태 코드로 응답했을 경우
                 console.log(err.response.data);
                 console.log(err.response.status);
                 console.log(err.response.header);
