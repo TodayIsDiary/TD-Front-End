@@ -74,7 +74,7 @@ function Diary(): React.ReactElement {
                             }
                     </S.Dropdown>
                     <S.Search>
-                        <S.SearchBar type={"text"} onChange={handleSearch} />
+                        <S.SearchBar placeholder="일기 제목을 검색하세요." type={"text"} onChange={handleSearch} />
                     </S.Search>
                 </S.Menu>
                 <S.Contour />
