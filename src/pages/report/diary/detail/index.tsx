@@ -5,9 +5,7 @@ import axios from "axios";
 import * as S from "./style";
 
 function DiaryDetail(): React.ReactElement {
-    const dropdownItems = ["일기", "댓글", "유저"];
-    const [onSelecting, setOnSelecting] = useState<boolean>(true);
-    const [selectedItem, setSelectedItem] = useState<string>(dropdownItems[0])
+    
     return(
         <>
             <S.Page>

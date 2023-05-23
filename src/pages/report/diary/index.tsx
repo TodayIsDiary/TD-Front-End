@@ -10,9 +10,6 @@ function Diary(): React.ReactElement {
     const [selectedItem, setSelectedItem] = useState<string>(dropdownItems[0])
     const [list, setList] = useState<{ report_id: number; reporter: string; title: string }[]>([]);
     const [viewList, setViewList] = useState<{ report_id: number; reporter: string; title: string }[]>([]);
-    const [report_id, setReport_id] = useState<number>(0);
-    const [reporter, setReporter] = useState<string>("");
-    const [title, setTitle] = useState<string>("");
 
     useEffect(() => {
         fetchData();
