@@ -1,13 +1,47 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 // Styles
 import * as S from "./style";
 
 function Comment(): React.ReactElement {
-    const dropdownItems = ["일기", "댓글", "유저"];
+    const dropdownItems = ["댓글", "유저", "일기"];
     const [onSelecting, setOnSelecting] = useState<boolean>(false);
-    const [selectedItem, setSelectedItem] = useState<string>(dropdownItems[0])
+    const [selectedItem, setSelectedItem] = useState<string>(dropdownItems[0]);
+    const [list, setList] = useState<{ report_id: number; reporter: string; title: string }[]>([]);
+    const [viewList, setViewList] = useState<{ report_id: number; reporter: string; title: string }[]>([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await axios.get("https://todayisdiary.site/report/list/comment", {
+                headers: {
+                Authorization: `${localStorage.getItem("TD-Atk")}`,
+                },
+            });
+            setList(response.data.list);
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
+
+    useEffect(() => {
+        setViewList(list);
+    }, [list]);
+
+    const handleSearch = useCallback(
+        (event: React.ChangeEvent<HTMLInputElement>) => {
+        const keyword = event.target.value;
+        const filteredList = list.filter((item) =>
+            item.title.toLowerCase().includes(keyword.toLowerCase())
+        );
+        setViewList(filteredList);
+        },
+        [list]
+    );
+
     return(
         <>
             <S.Page>
@@ -37,7 +71,7 @@ function Comment(): React.ReactElement {
                             }
                     </S.Dropdown>
                     <S.Search>
-                        <S.SearchBar type={"text"} />
+                        <S.SearchBar placeholder="댓글 내용을 검색하세요." type={"text"} onChange={handleSearch} />
                     </S.Search>
                 </S.Menu>
                 <S.Contour />
@@ -47,36 +81,16 @@ function Comment(): React.ReactElement {
                     <S.Reporter>신고자</S.Reporter>
                 </S.Category>
                 <S.Contour />
-                <S.ReportList>
-                    <S.Number>1</S.Number>
-                    <S.Context>김호영이 사람을 노동착취 해요.</S.Context>
-                    <S.UserName>이상운</S.UserName>
-                </S.ReportList>
-                <S.Contour />
-                <S.ReportList>
-                    <S.Number>2</S.Number>
-                    <S.Context>김호영이 사람을 노동착취 해요.</S.Context>
-                    <S.UserName>이상운</S.UserName>
-                </S.ReportList>
-                <S.Contour />
-                <S.ReportList>
-                    <S.Number>3</S.Number>
-                    <S.Context>김호영이 사람을 노동착취 해요.</S.Context>
-                    <S.UserName>이상운</S.UserName>
-                </S.ReportList>
-                <S.Contour />
-                <S.ReportList>
-                    <S.Number>4</S.Number>
-                    <S.Context>김호영이 사람을 노동착취 해요.</S.Context>
-                    <S.UserName>이상운</S.UserName>
-                </S.ReportList>
-                <S.Contour />
-                <S.ReportList>
-                    <S.Number>5</S.Number>
-                    <S.Context>김호영이 사람을 노동착취 해요.</S.Context>
-                    <S.UserName>이상운</S.UserName>
-                </S.ReportList>
-                <S.Contour />
+                {viewList.map((data) => (
+                    <>
+                    <S.ReportList key={data.report_id}>
+                        <S.Number>{data.report_id}</S.Number>
+                        <S.Context>{data.title}</S.Context>
+                        <S.Reporter>{data.reporter}</S.Reporter>
+                    </S.ReportList>
+                    <S.Contour />
+                    </>
+                ))}
                 <S.PageWrapper>
                     <S.PageNumber>1</S.PageNumber>
                     <S.PageNumber>2</S.PageNumber>
